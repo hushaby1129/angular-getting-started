@@ -1,0 +1,48 @@
+<h2>Products</h2>
+
+
+<div *ngFor="let product of products">
+
+  <h3>
+
+    <a 
+      [title]="product.name + ' details'"
+      [routerLink]="['/products', product.id]"
+    >
+      {{ product.name }}
+    </a>
+
+  </h3>
+
+  <p *ngIf="product.description">
+      {{product.description}}
+  </p>
+
+  <button *ngIf="product.description" (click)="test()">
+  ngIf
+</button>
+
+  <!--
+  <button *ngIf="product.description.length > 0; else elseCase" (click)="test()">
+    ngIf
+  </button>
+
+  <ng-template #elseCase>
+    <button (click)="test1('ngNotIf')">
+      ngNotIf
+    </button>
+  </ng-template>
+  -->
+
+  <app-product-alerts [product]="product" (notify)="onNotify()">
+  </app-product-alerts>
+  
+
+</div>
+
+
+<!-- 
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+-->
